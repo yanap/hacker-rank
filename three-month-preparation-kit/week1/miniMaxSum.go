@@ -55,6 +55,7 @@ import (
     "os"
     "strconv"
     "strings"
+	"sort"
 )
 
 /*
@@ -65,7 +66,15 @@ import (
 
 func miniMaxSum(arr []int32) {
     // Write your code here
-
+	sort.Slice(arr, func(i, j int) bool {
+        return arr[i] < arr[j]
+    })
+    var sum int64
+    length := 5
+    for i := 0; i < length; i++ {
+        sum += int64(arr[i])
+    } 
+    fmt.Println(sum - int64(arr[length-1]), sum - int64(arr[0]))
 }
 
 func main() {
