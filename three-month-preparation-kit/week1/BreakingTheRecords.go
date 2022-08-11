@@ -52,7 +52,28 @@ import (
 
 func breakingRecords(scores []int32) []int32 {
     // Write your code here
-
+	var (
+        max, min, cmax, cmin int32
+    )
+    br := make([]int32, 2)
+    for i, v := range scores {
+        if i == 0 {
+            max = v
+            min = v
+        } else {
+            if v < min {
+                cmin++
+                min = v
+            }
+            if v > max {
+                cmax++
+                max = v
+            }
+        }
+    }
+    br[0] = cmax
+    br[1] = cmin
+    return br
 }
 
 func main() {
