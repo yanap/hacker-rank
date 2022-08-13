@@ -8,11 +8,15 @@ import (
 	"unicode"
 )
 
-func ToSpaceDelimited(s string) (out string) {
-	for _, v := range s {
+func ToSpaceDelimited(s, ty string) (out string) {
+	for i, v := range s {
 		if unicode.IsUpper(v) {
 			l := unicode.ToLower(v)
-			out += " " + string(l)
+			if ty == "C" && i == 0 {
+				out += string(l)
+			} else {
+				out += " " + string(l)
+			}
 		} else {
 			out += string(v)
 		}
@@ -48,11 +52,11 @@ func main() {
 		if a[0] == "S" {
 			if a[1] == "M" {
 				m := strings.Trim(a[2], "()")
-				out = ToSpaceDelimited(m)
+				out = ToSpaceDelimited(m, a[1])
 			} else if a[1] == "C" {
-				out = ToSpaceDelimited(a[2])
+				out = ToSpaceDelimited(a[2], a[1])
 			} else if a[1] == "V" {
-				out = ToSpaceDelimited(a[2])
+				out = ToSpaceDelimited(a[2], a[1])
 			}
 		} else if a[0] == "C" {
 			if a[1] == "M" {
