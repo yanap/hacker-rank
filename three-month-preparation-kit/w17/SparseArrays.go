@@ -20,7 +20,17 @@ import (
 
 func matchingStrings(strings []string, queries []string) []int32 {
 	// Write your code here
-
+	var r []int32
+	for _, q := range queries {
+		var c int32
+		for _, s := range strings {
+			if s == q {
+				c++
+			}
+		}
+		r = append(r, c)
+	}
+	return r
 }
 
 func main() {
@@ -36,11 +46,11 @@ func main() {
 	stringsCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
 	checkError(err)
 
-	var strings []string
+	var ss []string
 
 	for i := 0; i < int(stringsCount); i++ {
 		stringsItem := readLine(reader)
-		strings = append(strings, stringsItem)
+		ss = append(ss, stringsItem)
 	}
 
 	queriesCount, err := strconv.ParseInt(strings.TrimSpace(readLine(reader)), 10, 64)
@@ -53,7 +63,7 @@ func main() {
 		queries = append(queries, queriesItem)
 	}
 
-	res := matchingStrings(strings, queries)
+	res := matchingStrings(ss, queries)
 
 	for i, resItem := range res {
 		fmt.Fprintf(writer, "%d", resItem)
