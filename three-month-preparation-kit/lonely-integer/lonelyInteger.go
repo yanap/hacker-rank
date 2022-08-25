@@ -28,7 +28,7 @@ func lonelyinteger(a []int32) int32 {
 		}
 	}
 	for k, v := range m {
-		if v > 1 {
+		if v == 1 {
 			r = k
 		}
 	}
