@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"io"
-	"math/bits"
 	"os"
 	"strconv"
 	"strings"
@@ -19,9 +18,24 @@ import (
 
 func flippingBits(n int64) int64 {
 	// Write your code here
-	x := uint32(n)
-	r := bits.ReverseBytes32(x)
-	return int64(r)
+	sn := fmt.Sprintf("%032b", n)
+	fmt.Println(sn)
+	s := strings.Split(sn, "")
+	fmt.Println(s)
+	var sf []string
+	for i := range s {
+		if s[i] == "0" {
+			sf = append(sf, "1")
+		} else if s[i] == "1" {
+			sf = append(sf, "0")
+		}
+	}
+	fmt.Println(sf)
+	sx := strings.Join(sf, "")
+	fmt.Println(sx)
+	x, _ := strconv.ParseInt(sx, 2, 64)
+	fmt.Println(x)
+	return x
 }
 
 func main() {
