@@ -22,10 +22,11 @@ int n: an integer
 Returns
 
 int: the unsigned decimal integer result
-Input Format
 
-The first line of the input contains , the number of queries.
-Each of the next  lines contain an integer, , to process.
+## Input Format
+
+The first line of the input contains q, the number of queries.
+Each of the next q lines contain an integer, n, to process.
 
 Constraints
 
