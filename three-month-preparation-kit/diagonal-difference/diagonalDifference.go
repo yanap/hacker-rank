@@ -18,6 +18,7 @@ import (
 
 func diagonalDifference(arr [][]int32) int32 {
 	// Write your code here
+	// https://medium.com/@kuldeep.avsar/golang-how-to-get-the-diagonal-difference-problem-solving-bd05793c4494
 	var l, r, s int32
 	for i, n := range arr {
 		fmt.Println("i", i)
