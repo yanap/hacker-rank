@@ -18,7 +18,48 @@ import (
 
 func diagonalDifference(arr [][]int32) int32 {
 	// Write your code here
-
+	var l, r, s int32
+	for i, n := range arr {
+		fmt.Println("i", i)
+		for j, m := range n {
+			fmt.Println("j", j)
+			if i == 0 && j == 0 {
+				l = m
+				fmt.Println("00m", m)
+				fmt.Println("00l", l)
+			}
+			if i == 0 && j == 2 {
+				r = m
+				fmt.Println("02m", m)
+				fmt.Println("02r", r)
+			}
+			if i == 1 && j == 1 {
+				l = l + m
+				r = r + m
+				fmt.Println("11m", m)
+				fmt.Println("11l", l)
+				fmt.Println("11r", r)
+			}
+			if i == 2 && j == 0 {
+				r = r + m
+				fmt.Println("20m", m)
+				fmt.Println("20r", r)
+			}
+			if i == 2 && j == 2 {
+				l = l + m
+				fmt.Println("22m", m)
+				fmt.Println("22l", l)
+			}
+		}
+	}
+	fmt.Println("l", l)
+	fmt.Println("r", r)
+	if l > r {
+		s = l - r
+	} else {
+		s = r - l
+	}
+	return s
 }
 
 func main() {
