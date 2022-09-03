@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"io"
+	"math"
 	"os"
 	"strconv"
 	"strings"
@@ -19,48 +20,23 @@ import (
 func diagonalDifference(arr [][]int32) int32 {
 	// Write your code here
 	// https://medium.com/@kuldeep.avsar/golang-how-to-get-the-diagonal-difference-problem-solving-bd05793c4494
-	var l, r, s int32
-	for i, n := range arr {
-		fmt.Println("i", i)
-		for j, m := range n {
-			fmt.Println("j", j)
-			if i == 0 && j == 0 {
-				l = m
-				fmt.Println("00m", m)
-				fmt.Println("00l", l)
+	l := []int32{}
+	r := []int32{}
+	var ls, rs int32
+	for x := range arr {
+		for y := range arr {
+			if x == y {
+				l = append(l, arr[x][y])
+				ls += arr[x][y]
 			}
-			if i == 0 && j == 2 {
-				r = m
-				fmt.Println("02m", m)
-				fmt.Println("02r", r)
-			}
-			if i == 1 && j == 1 {
-				l = l + m
-				r = r + m
-				fmt.Println("11m", m)
-				fmt.Println("11l", l)
-				fmt.Println("11r", r)
-			}
-			if i == 2 && j == 0 {
-				r = r + m
-				fmt.Println("20m", m)
-				fmt.Println("20r", r)
-			}
-			if i == 2 && j == 2 {
-				l = l + m
-				fmt.Println("22m", m)
-				fmt.Println("22l", l)
+
+			if x == len(arr)-y-1 {
+				r = append(r, arr[x][y])
+				rs += arr[x][y]
 			}
 		}
 	}
-	fmt.Println("l", l)
-	fmt.Println("r", r)
-	if l > r {
-		s = l - r
-	} else {
-		s = r - l
-	}
-	return s
+	return int32(math.Abs(float64(ls) - float64(rs)))
 }
 
 func main() {
