@@ -18,15 +18,9 @@ import (
 
 func countingSort(arr []int32) []int32 {
 	// Write your code here
-	cl := make([]int32, len(arr))
-	for i, v := range arr {
-		var c int32
-		for _, w := range arr {
-			if v == w {
-				c++
-			}
-		}
-		cl[i] = c
+	cl := make([]int32, 100)
+	for _, v := range arr {
+		cl[v]++
 	}
 	return cl
 }
