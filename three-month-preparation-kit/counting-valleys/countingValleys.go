@@ -22,6 +22,7 @@ func countingValleys(steps int32, path string) int32 {
 	// Write your code here
 	fmt.Println(steps)
 	fmt.Println(path)
+	return 0
 }
 
 func main() {
