@@ -20,9 +20,28 @@ import (
 
 func countingValleys(steps int32, path string) int32 {
 	// Write your code here
-	fmt.Println(steps)
-	fmt.Println(path)
-	return 0
+	var (
+		pathList                           []string
+		enteredValley                      bool
+		i, currentElevation, valleyCounter int32
+	)
+	pathList = strings.Split(path, "")
+
+	for i = 0; i < steps; i++ {
+		if pathList[i] == "U" {
+			currentElevation++
+		} else {
+			currentElevation--
+		}
+		if currentElevation < 0 && enteredValley == false {
+			enteredValley = true
+			valleyCounter++
+		}
+		if currentElevation >= 0 && enteredValley == true {
+			enteredValley = false
+		}
+	}
+	return valleyCounter
 }
 
 func main() {
